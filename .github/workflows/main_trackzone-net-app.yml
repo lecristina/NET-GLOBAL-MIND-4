@@ -1,0 +1,36 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: 'Build and deploy ASP.Net Core app to Azure Web App: trackzone-net-app'
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Build with dotnet
+      run: dotnet build challenge-3-net.csproj --configuration Release
+    
+    - name: dotnet publish
+      run: dotnet publish challenge-3-net.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp 
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: 'trackzone-net-app'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_578b0de115ef4b60a8f24d048a45f0f0 }}
+        package: ${{env.DOTNET_ROOT}}/myapp 
