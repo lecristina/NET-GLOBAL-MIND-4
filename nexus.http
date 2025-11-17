@@ -1,6 +1,6 @@
-@challenge_3_net_HostAddress = http://localhost:5052
+@nexus_HostAddress = http://localhost:5052
 
-GET {{challenge_3_net_HostAddress}}/weatherforecast/
+GET {{nexus_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
