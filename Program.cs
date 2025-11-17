@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using challenge_3_net.Data;
-using challenge_3_net.Repositories;
-using challenge_3_net.Repositories.Interfaces;
-using challenge_3_net.Services;
-using challenge_3_net.Services.Interfaces;
-using challenge_3_net.Services.Mapping;
-using challenge_3_net.Services.HealthChecks;
+using nexus.Data;
+using nexus.Repositories;
+using nexus.Repositories.Interfaces;
+using nexus.Services;
+using nexus.Services.Interfaces;
+using nexus.Services.Mapping;
+using nexus.Services.HealthChecks;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using System.Reflection;
 
@@ -141,7 +141,7 @@ builder.Services.AddScoped<IHabitoService, HabitoService>();
 builder.Services.AddScoped<IBadgeService, BadgeService>();
 
 // Configurar serviços de autenticação
-builder.Services.AddScoped<challenge_3_net.Services.Auth.JwtService>();
+builder.Services.AddScoped<nexus.Services.Auth.JwtService>();
 
 // Configurar serviços de ML
 // TODO: Implementar serviço de ML para análise de bem-estar do MindTrack

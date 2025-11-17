@@ -2,11 +2,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using challenge_3_net.Models;
-using challenge_3_net.Data;
+using nexus.Models;
+using nexus.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace challenge_3_net.Services.Auth
+namespace nexus.Services.Auth
 {
     /// <summary>
     /// Serviço para geração e validação de tokens JWT

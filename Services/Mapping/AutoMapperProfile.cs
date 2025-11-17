@@ -1,8 +1,8 @@
 using AutoMapper;
-using challenge_3_net.Models;
-using challenge_3_net.Models.DTOs;
+using nexus.Models;
+using nexus.Models.DTOs;
 
-namespace challenge_3_net.Services.Mapping
+namespace nexus.Services.Mapping
 {
     /// <summary>
     /// Perfil de mapeamento do AutoMapper para MindTrack

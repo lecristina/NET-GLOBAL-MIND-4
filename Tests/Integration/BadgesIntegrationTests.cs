@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using challenge_3_net;
+using nexus;
 
-namespace challenge_3_net.Tests.Integration
+namespace nexus.Tests.Integration
 {
     /// <summary>
     /// Testes de integração para endpoints de Badges

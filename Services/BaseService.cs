@@ -1,9 +1,9 @@
 using AutoMapper;
-using challenge_3_net.Models.DTOs;
+using nexus.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace challenge_3_net.Services
+namespace nexus.Services
 {
     /// <summary>
     /// Classe base para serviços com funcionalidades comuns

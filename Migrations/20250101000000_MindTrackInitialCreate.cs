@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace challenge_3_net.Migrations
+namespace nexus.Migrations
 {
     /// <inheritdoc />
     public partial class MindTrackInitialCreate : Migration

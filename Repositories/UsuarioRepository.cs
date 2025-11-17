@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using challenge_3_net.Data;
-using challenge_3_net.Models;
-using challenge_3_net.Repositories.Interfaces;
+using nexus.Data;
+using nexus.Models;
+using nexus.Repositories.Interfaces;
 
-namespace challenge_3_net.Repositories
+namespace nexus.Repositories
 {
     /// <summary>
     /// Implementação do repositório de usuários

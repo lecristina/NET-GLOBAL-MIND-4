@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using challenge_3_net.Data;
+using nexus.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace challenge_3_net.Services.HealthChecks
+namespace nexus.Services.HealthChecks
 {
     /// <summary>
     /// Health check customizado para verificar a conectividade do banco de dados Oracle

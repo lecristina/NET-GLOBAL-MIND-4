@@ -1,17 +1,17 @@
-Ôªøusing Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using challenge_3_net.Models.DTOs;
-using challenge_3_net.Services.Interfaces;
+using nexus.Models.DTOs;
+using nexus.Services.Interfaces;
 
-namespace challenge_3_net.Controllers
+namespace nexus.Controllers
 {
     /// <summary>
-    /// Controller para gerenciamento de usu√°rios do MindTrack
+    /// Controller para gerenciamento de usu·rios do MindTrack
     /// </summary>
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
-    [ApiVersion("1")] // Aceitar tamb√©m v1
+    [ApiVersion("1")] // Aceitar tambÈm v1
     [Produces("application/json")]
     public class UsuariosController : ControllerBase
     {
@@ -25,13 +25,13 @@ namespace challenge_3_net.Controllers
         }
 
         /// <summary>
-        /// Lista todos os usu√°rios com pagina√ß√£o
+        /// Lista todos os usu·rios com paginaÁ„o
         /// </summary>
-        /// <param name="pageNumber">N√∫mero da p√°gina (padr√£o: 1)</param>
-        /// <param name="pageSize">Tamanho da p√°gina (padr√£o: 10)</param>
-        /// <returns>Lista paginada de usu√°rios</returns>
-        /// <response code="200">Retorna a lista de usu√°rios</response>
-        /// <response code="400">Par√¢metros inv√°lidos</response>
+        /// <param name="pageNumber">N˙mero da p·gina (padr„o: 1)</param>
+        /// <param name="pageSize">Tamanho da p·gina (padr„o: 10)</param>
+        /// <returns>Lista paginada de usu·rios</returns>
+        /// <response code="200">Retorna a lista de usu·rios</response>
+        /// <response code="400">Par‚metros inv·lidos</response>
         [HttpGet]
         [ProducesResponseType(typeof(PagedResultDto<UsuarioResponseDto>), 200)]
         [ProducesResponseType(400)]
@@ -52,18 +52,18 @@ namespace challenge_3_net.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro ao obter usu√°rios");
+                _logger.LogError(ex, "Erro ao obter usu·rios");
                 return StatusCode(500, "Erro interno do servidor");
             }
         }
 
         /// <summary>
-        /// Busca um usu√°rio por ID
+        /// Busca um usu·rio por ID
         /// </summary>
-        /// <param name="id">ID do usu√°rio</param>
-        /// <returns>Dados do usu√°rio</returns>
-        /// <response code="200">Retorna o usu√°rio encontrado</response>
-        /// <response code="404">Usu√°rio n√£o encontrado</response>
+        /// <param name="id">ID do usu·rio</param>
+        /// <returns>Dados do usu·rio</returns>
+        /// <response code="200">Retorna o usu·rio encontrado</response>
+        /// <response code="404">Usu·rio n„o encontrado</response>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(UsuarioResponseDto), 200)]
         [ProducesResponseType(404)]
@@ -75,26 +75,26 @@ namespace challenge_3_net.Controllers
                 var usuario = await _usuarioService.ObterPorIdAsync(id);
                 if (usuario == null)
                 {
-                    return NotFound($"Usu√°rio com ID {id} n√£o encontrado");
+                    return NotFound($"Usu·rio com ID {id} n„o encontrado");
                 }
 
                 return Ok(usuario);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro ao obter usu√°rio com ID {Id}", id);
+                _logger.LogError(ex, "Erro ao obter usu·rio com ID {Id}", id);
                 return StatusCode(500, "Erro interno do servidor");
             }
         }
 
         /// <summary>
-        /// Cria um novo usu√°rio
+        /// Cria um novo usu·rio
         /// </summary>
-        /// <param name="dto">Dados do usu√°rio a ser criado</param>
-        /// <returns>Usu√°rio criado</returns>
-        /// <response code="201">Usu√°rio criado com sucesso</response>
-        /// <response code="400">Dados inv√°lidos</response>
-        /// <response code="409">Email j√° existe</response>
+        /// <param name="dto">Dados do usu·rio a ser criado</param>
+        /// <returns>Usu·rio criado</returns>
+        /// <response code="201">Usu·rio criado com sucesso</response>
+        /// <response code="400">Dados inv·lidos</response>
+        /// <response code="409">Email j· existe</response>
         [HttpPost]
         [ProducesResponseType(typeof(UsuarioResponseDto), 201)]
         [ProducesResponseType(400)]
@@ -118,22 +118,22 @@ namespace challenge_3_net.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro ao criar usu√°rio: {Message}", ex.Message);
+                _logger.LogError(ex, "Erro ao criar usu·rio: {Message}", ex.Message);
                 _logger.LogError(ex, "Stack trace: {StackTrace}", ex.StackTrace);
                 return StatusCode(500, new { message = "Erro interno do servidor", details = ex.Message });
             }
         }
 
         /// <summary>
-        /// Atualiza um usu√°rio existente
+        /// Atualiza um usu·rio existente
         /// </summary>
-        /// <param name="id">ID do usu√°rio</param>
-        /// <param name="dto">Dados atualizados do usu√°rio</param>
-        /// <returns>Usu√°rio atualizado</returns>
-        /// <response code="200">Usu√°rio atualizado com sucesso</response>
-        /// <response code="400">Dados inv√°lidos</response>
-        /// <response code="404">Usu√°rio n√£o encontrado</response>
-        /// <response code="409">Email j√° existe</response>
+        /// <param name="id">ID do usu·rio</param>
+        /// <param name="dto">Dados atualizados do usu·rio</param>
+        /// <returns>Usu·rio atualizado</returns>
+        /// <response code="200">Usu·rio atualizado com sucesso</response>
+        /// <response code="400">Dados inv·lidos</response>
+        /// <response code="404">Usu·rio n„o encontrado</response>
+        /// <response code="409">Email j· existe</response>
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(UsuarioResponseDto), 200)]
         [ProducesResponseType(400)]
@@ -152,7 +152,7 @@ namespace challenge_3_net.Controllers
                 var usuario = await _usuarioService.AtualizarAsync(id, dto);
                 if (usuario == null)
                 {
-                    return NotFound($"Usu√°rio com ID {id} n√£o encontrado");
+                    return NotFound($"Usu·rio com ID {id} n„o encontrado");
                 }
 
                 return Ok(usuario);
@@ -163,18 +163,18 @@ namespace challenge_3_net.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro ao atualizar usu√°rio com ID {Id}", id);
+                _logger.LogError(ex, "Erro ao atualizar usu·rio com ID {Id}", id);
                 return StatusCode(500, "Erro interno do servidor");
             }
         }
 
         /// <summary>
-        /// Exclui um usu√°rio
+        /// Exclui um usu·rio
         /// </summary>
-        /// <param name="id">ID do usu√°rio</param>
-        /// <returns>Resultado da opera√ß√£o</returns>
-        /// <response code="204">Usu√°rio exclu√≠do com sucesso</response>
-        /// <response code="404">Usu√°rio n√£o encontrado</response>
+        /// <param name="id">ID do usu·rio</param>
+        /// <returns>Resultado da operaÁ„o</returns>
+        /// <response code="204">Usu·rio excluÌdo com sucesso</response>
+        /// <response code="404">Usu·rio n„o encontrado</response>
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
@@ -186,14 +186,14 @@ namespace challenge_3_net.Controllers
                 var sucesso = await _usuarioService.ExcluirAsync(id);
                 if (!sucesso)
                 {
-                    return NotFound($"Usu√°rio com ID {id} n√£o encontrado");
+                    return NotFound($"Usu·rio com ID {id} n„o encontrado");
                 }
 
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro ao excluir usu√°rio com ID {Id}", id);
+                _logger.LogError(ex, "Erro ao excluir usu·rio com ID {Id}", id);
                 return StatusCode(500, "Erro interno do servidor");
             }
         }

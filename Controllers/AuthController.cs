@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using challenge_3_net.Services.Auth;
-using challenge_3_net.Models.DTOs;
+using nexus.Services.Auth;
+using nexus.Models.DTOs;
 using System.Security.Claims;
 
-namespace challenge_3_net.Controllers
+namespace nexus.Controllers
 {
     /// <summary>
     /// Controller para autenticação e autorização

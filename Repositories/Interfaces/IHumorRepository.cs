@@ -1,6 +1,6 @@
-using challenge_3_net.Models;
+using nexus.Models;
 
-namespace challenge_3_net.Repositories.Interfaces
+namespace nexus.Repositories.Interfaces
 {
     public interface IHumorRepository : IRepository<Humor>
     {

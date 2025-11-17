@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using challenge_3_net.Models.DTOs;
-using challenge_3_net.Services.Interfaces;
+using nexus.Models.DTOs;
+using nexus.Services.Interfaces;
 
-namespace challenge_3_net.Controllers
+namespace nexus.Controllers
 {
     /// <summary>
     /// Controller para gerenciamento de alertas de IA do MindTrack

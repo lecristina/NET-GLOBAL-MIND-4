@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace challenge_3_net.Services.HealthChecks
+namespace nexus.Services.HealthChecks
 {
     /// <summary>
     /// Health check customizado para verificar o uso de memória da aplicação

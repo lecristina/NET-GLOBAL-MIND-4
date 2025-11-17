@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace challenge_3_net.Repositories.Interfaces
+namespace nexus.Repositories.Interfaces
 {
     /// <summary>
     /// Interface base para repositórios seguindo o padrão Repository

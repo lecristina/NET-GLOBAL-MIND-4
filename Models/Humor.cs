@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace challenge_3_net.Models
+namespace nexus.Models
 {
     /// <summary>
     /// Entidade que representa um registro de humor do usuário

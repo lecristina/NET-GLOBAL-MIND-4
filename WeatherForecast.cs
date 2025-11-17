@@ -1,4 +1,4 @@
-namespace challenge_3_net
+namespace nexus
 {
     public class WeatherForecast
     {

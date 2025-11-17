@@ -1,6 +1,6 @@
-using challenge_3_net.Models.DTOs;
+using nexus.Models.DTOs;
 
-namespace challenge_3_net.Services.Interfaces
+namespace nexus.Services.Interfaces
 {
     /// <summary>
     /// Interface para serviço de usuários

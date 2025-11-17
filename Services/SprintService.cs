@@ -1,11 +1,11 @@
 using AutoMapper;
-using challenge_3_net.Models;
-using challenge_3_net.Models.DTOs;
-using challenge_3_net.Repositories.Interfaces;
-using challenge_3_net.Services.Interfaces;
+using nexus.Models;
+using nexus.Models.DTOs;
+using nexus.Repositories.Interfaces;
+using nexus.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace challenge_3_net.Services
+namespace nexus.Services
 {
     public class SprintService : BaseService, ISprintService
     {

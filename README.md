@@ -284,7 +284,7 @@ O banco de dados MindTrack possui as seguintes tabelas:
 2. **Opção 1 - Abrir pela Solution**:
    - Clique em `File` → `Open` → `Project/Solution...`
    - Navegue até a pasta do projeto
-   - Selecione o arquivo `challenge-3-net.sln`
+   - Selecione o arquivo `nexus.sln`
    - Clique em `Open`
 
 3. **Opção 2 - Abrir pela Pasta**:

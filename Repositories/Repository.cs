@@ -1,9 +1,9 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using challenge_3_net.Data;
-using challenge_3_net.Repositories.Interfaces;
+using nexus.Data;
+using nexus.Repositories.Interfaces;
 
-namespace challenge_3_net.Repositories
+namespace nexus.Repositories
 {
     /// <summary>
     /// Implementação base do repositório usando Entity Framework

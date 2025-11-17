@@ -1,13 +1,13 @@
 using Xunit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using challenge_3_net.Services.Auth;
-using challenge_3_net.Models;
-using challenge_3_net.Data;
+using nexus.Services.Auth;
+using nexus.Models;
+using nexus.Data;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
-namespace challenge_3_net.Tests.Unit
+namespace nexus.Tests.Unit
 {
     /// <summary>
     /// Testes unitários para JwtService

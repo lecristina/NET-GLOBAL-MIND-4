@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Text.Json;
 
-namespace challenge_3_net.Controllers
+namespace nexus.Controllers
 {
     /// <summary>
     /// Controller para Health Checks da API

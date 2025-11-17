@@ -1,4 +1,4 @@
-namespace challenge_3_net.Models.DTOs
+namespace nexus.Models.DTOs
 {
     /// <summary>
     /// DTO para resultado paginado

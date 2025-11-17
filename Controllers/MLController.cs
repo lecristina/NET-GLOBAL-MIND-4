@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
-namespace challenge_3_net.Controllers
+namespace nexus.Controllers
 {
     /// <summary>
     /// Controller para funcionalidades de Machine Learning (TODO: Implementar para MindTrack)

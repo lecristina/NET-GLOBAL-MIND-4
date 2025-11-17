@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace challenge_3_net.Controllers
+namespace nexus.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace challenge_3_net.Models.DTOs
+namespace nexus.Models.DTOs
 {
     /// <summary>
     /// DTO para criação de usuário

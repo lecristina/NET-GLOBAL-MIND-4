@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using challenge_3_net.Data;
+using nexus.Data;
 using System;
 using System.Linq;
 using BCrypt.Net;
 
-namespace challenge_3_net.Tests.Integration
+namespace nexus.Tests.Integration
 {
     /// <summary>
     /// Factory customizada para testes de integração que usa banco de dados em memória
@@ -69,7 +69,7 @@ namespace challenge_3_net.Tests.Integration
             // Criar usuário de teste para autenticação
             if (!context.Usuarios.Any(u => u.Email == "teste@example.com"))
             {
-                var usuario = new challenge_3_net.Models.Usuario
+                var usuario = new nexus.Models.Usuario
                 {
                     Nome = "Usuário Teste",
                     Email = "teste@example.com",
@@ -85,7 +85,7 @@ namespace challenge_3_net.Tests.Integration
             // Criar usuário gestor de teste
             if (!context.Usuarios.Any(u => u.Email == "gestor@example.com"))
             {
-                var gestor = new challenge_3_net.Models.Usuario
+                var gestor = new nexus.Models.Usuario
                 {
                     Nome = "Gestor Teste",
                     Email = "gestor@example.com",

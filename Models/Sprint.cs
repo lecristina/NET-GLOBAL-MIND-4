@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace challenge_3_net.Models
+namespace nexus.Models
 {
     /// <summary>
     /// Entidade que representa uma sprint de trabalho do usuário

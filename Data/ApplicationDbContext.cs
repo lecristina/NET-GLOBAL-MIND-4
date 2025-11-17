@@ -1,12 +1,12 @@
-Ôªøusing Microsoft.EntityFrameworkCore;
-using challenge_3_net.Models;
+using Microsoft.EntityFrameworkCore;
+using nexus.Models;
 using Oracle.EntityFrameworkCore;
 using Oracle.EntityFrameworkCore.Metadata;
 
-namespace challenge_3_net.Data
+namespace nexus.Data
 {
     /// <summary>
-    /// Contexto do Entity Framework para a aplica√ß√£o MindTrack
+    /// Contexto do Entity Framework para a aplicaÁ„o MindTrack
     /// </summary>
     public class ApplicationDbContext : DbContext
     {
@@ -15,7 +15,7 @@ namespace challenge_3_net.Data
         }
 
         /// <summary>
-        /// Tabela de usu√°rios
+        /// Tabela de usu·rios
         /// </summary>
         public DbSet<Usuario> Usuarios { get; set; } = null!;
 
@@ -35,7 +35,7 @@ namespace challenge_3_net.Data
         public DbSet<AlertaIA> AlertasIA { get; set; } = null!;
 
         /// <summary>
-        /// Tabela de h√°bitos
+        /// Tabela de h·bitos
         /// </summary>
         public DbSet<Habito> Habitos { get; set; } = null!;
 
@@ -45,7 +45,7 @@ namespace challenge_3_net.Data
         public DbSet<Badge> Badges { get; set; } = null!;
 
         /// <summary>
-        /// Tabela de rela√ß√£o usu√°rio-badge
+        /// Tabela de relaÁ„o usu·rio-badge
         /// </summary>
         public DbSet<UsuarioBadge> UsuarioBadges { get; set; } = null!;
 
@@ -53,14 +53,14 @@ namespace challenge_3_net.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configurar Oracle - sem schema padr√£o
+            // Configurar Oracle - sem schema padr„o
             modelBuilder.HasDefaultSchema(null);
             
-            // Configurar para usar nomes de tabelas e colunas em mai√∫sculas (padr√£o Oracle)
-            // O Oracle converte nomes sem aspas para mai√∫sculas automaticamente
+            // Configurar para usar nomes de tabelas e colunas em mai˙sculas (padr„o Oracle)
+            // O Oracle converte nomes sem aspas para mai˙sculas automaticamente
 
-            // Configura√ß√£o da entidade Usuario para Oracle (conforme script MindTrack)
-            // Oracle converte nomes sem aspas para MAI√öSCULAS, ent√£o usamos mai√∫sculas aqui
+            // ConfiguraÁ„o da entidade Usuario para Oracle (conforme script MindTrack)
+            // Oracle converte nomes sem aspas para MAI⁄SCULAS, ent„o usamos mai˙sculas aqui
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.ToTable("T_MT_USUARIOS");
@@ -75,11 +75,11 @@ namespace challenge_3_net.Data
                 entity.Property(e => e.DataCadastro).IsRequired().HasColumnName("DATA_CADASTRO").HasDefaultValueSql("CURRENT_DATE");
                 entity.Property(e => e.Empresa).HasMaxLength(100).HasColumnName("EMPRESA");
 
-                // √çndice √∫nico
+                // Õndice ˙nico
                 entity.HasIndex(e => e.Email).IsUnique();
             });
 
-            // Configura√ß√£o da entidade Humor para Oracle
+            // ConfiguraÁ„o da entidade Humor para Oracle
             modelBuilder.Entity<Humor>(entity =>
             {
                 entity.ToTable("T_MT_HUMOR");
@@ -100,7 +100,7 @@ namespace challenge_3_net.Data
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Configura√ß√£o da entidade Sprint para Oracle
+            // ConfiguraÁ„o da entidade Sprint para Oracle
             modelBuilder.Entity<Sprint>(entity =>
             {
                 entity.ToTable("T_MT_SPRINTS");
@@ -122,11 +122,11 @@ namespace challenge_3_net.Data
                       .HasForeignKey(e => e.IdUsuario)
                       .OnDelete(DeleteBehavior.Cascade);
 
-                // √çndice √∫nico composto
+                // Õndice ˙nico composto
                 entity.HasIndex(e => new { e.IdUsuario, e.NomeSprint }).IsUnique();
             });
 
-            // Configura√ß√£o da entidade AlertaIA para Oracle
+            // ConfiguraÁ„o da entidade AlertaIA para Oracle
             modelBuilder.Entity<AlertaIA>(entity =>
             {
                 entity.ToTable("T_MT_ALERTAS_IA");
@@ -147,7 +147,7 @@ namespace challenge_3_net.Data
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Configura√ß√£o da entidade Habito para Oracle
+            // ConfiguraÁ„o da entidade Habito para Oracle
             modelBuilder.Entity<Habito>(entity =>
             {
                 entity.ToTable("T_MT_HABITOS");
@@ -167,7 +167,7 @@ namespace challenge_3_net.Data
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Configura√ß√£o da entidade Badge para Oracle
+            // ConfiguraÁ„o da entidade Badge para Oracle
             modelBuilder.Entity<Badge>(entity =>
             {
                 entity.ToTable("T_MT_BADGES");
@@ -180,7 +180,7 @@ namespace challenge_3_net.Data
                 entity.Property(e => e.PontosRequeridos).IsRequired().HasColumnName("PONTOS_REQUERIDOS");
             });
 
-            // Configura√ß√£o da entidade UsuarioBadge para Oracle
+            // ConfiguraÁ„o da entidade UsuarioBadge para Oracle
             modelBuilder.Entity<UsuarioBadge>(entity =>
             {
                 entity.ToTable("T_MT_USUARIO_BADGES");
