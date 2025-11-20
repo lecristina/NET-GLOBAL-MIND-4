@@ -18,6 +18,24 @@ namespace nexus.Tests.Integration
         {
             // Configurar o ambiente ANTES de configurar os serviços
             builder.UseEnvironment("Testing");
+            
+            // Configurar ContentRoot para o diretório do projeto
+            // O WebApplicationFactory precisa do diretório raiz do projeto, não de um subdiretório
+            var projectDir = Path.GetDirectoryName(typeof(CustomWebApplicationFactory<>).Assembly.Location);
+            if (!string.IsNullOrEmpty(projectDir))
+            {
+                // Ir para o diretório raiz do projeto (onde está o .csproj)
+                var solutionDir = Directory.GetParent(projectDir)?.Parent?.Parent?.FullName;
+                if (!string.IsNullOrEmpty(solutionDir) && Directory.Exists(solutionDir))
+                {
+                    builder.UseContentRoot(solutionDir);
+                }
+                else
+                {
+                    // Fallback: usar o diretório atual
+                    builder.UseContentRoot(Directory.GetCurrentDirectory());
+                }
+            }
 
             builder.ConfigureServices(services =>
             {

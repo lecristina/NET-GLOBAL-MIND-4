@@ -1,0 +1,201 @@
+### ============================================
+### GUIA DE TESTES - FUNCIONALIDADES DE IA
+### MindTrack API - Machine Learning
+### ============================================
+
+@baseUrl = http://localhost:5000
+@baseUrlHttps = https://localhost:5001
+
+### Variável para armazenar o token JWT
+@token = 
+
+### ============================================
+### PASSO 1: OBTER TOKEN JWT (OBRIGATÓRIO)
+### ============================================
+
+### 1.1 - Criar um usuário (se ainda não tiver)
+POST {{baseUrl}}/api/v1.0/Usuarios
+Content-Type: application/json
+
+{
+  "nome": "Teste IA",
+  "email": "teste.ia@example.com",
+  "senha": "senha123",
+  "perfil": "PROFISSIONAL",
+  "empresa": "Tech Solutions"
+}
+
+### 1.2 - Fazer login para obter o token
+POST {{baseUrl}}/api/v1.0/Auth/login
+Content-Type: application/json
+
+{
+  "email": "teste.ia@example.com",
+  "senha": "senha123"
+}
+
+### ⚠️ IMPORTANTE: Copie o token da resposta acima e cole na variável @token abaixo
+### Exemplo: @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### ============================================
+### PASSO 2: TESTAR ENDPOINTS DE IA
+### ============================================
+
+### 2.1 - Verificar status das funcionalidades de ML
+GET {{baseUrl}}/api/v1.0/ML/status
+Authorization: Bearer {{token}}
+
+### ============================================
+### IA GENERATIVA - ANÁLISE DE SENTIMENTO
+### ============================================
+
+### 2.2 - Analisar sentimento de texto (Texto Negativo)
+POST {{baseUrl}}/api/v1.0/ML/sentimento/analisar
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "texto": "Estou me sentindo muito cansado e sobrecarregado com muitas tarefas. Não consigo descansar direito e estou muito estressado."
+}
+
+### 2.3 - Analisar sentimento de texto (Texto Positivo)
+POST {{baseUrl}}/api/v1.0/ML/sentimento/analisar
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "texto": "Hoje me senti muito bem! Produtivo e energizado. Consegui finalizar todas as tarefas e estou satisfeito com o trabalho."
+}
+
+### 2.4 - Analisar sentimento de texto (Texto Neutro)
+POST {{baseUrl}}/api/v1.0/ML/sentimento/analisar
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "texto": "Dia normal de trabalho, sem grandes eventos. Consegui fazer algumas tarefas."
+}
+
+### 2.5 - Analisar múltiplos textos
+POST {{baseUrl}}/api/v1.0/ML/sentimento/analisar-multiplos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+[
+  "Me senti bem hoje, produtivo",
+  "Cansado, mas consegui finalizar as tarefas",
+  "Muito estressado com o prazo, sobrecarregado"
+]
+
+### ============================================
+### VISÃO COMPUTACIONAL - CLASSIFICAÇÃO DE IMAGENS
+### ============================================
+
+### 📸 COMO CRIAR UMA IMAGEM BASE64 VÁLIDA:
+### 
+### Formatos aceitos: JPEG, PNG, GIF (máximo 10MB)
+### 
+### PowerShell (Windows):
+###   $imagePath = "C:\caminho\para\imagem.jpg"
+###   $imageBytes = [System.IO.File]::ReadAllBytes($imagePath)
+###   $base64String = [System.Convert]::ToBase64String($imageBytes)
+###   $dataUrl = "data:image/jpeg;base64,$base64String"
+###   Write-Host $dataUrl
+###
+### Python:
+###   import base64
+###   with open("imagem.jpg", "rb") as f:
+###       encoded = base64.b64encode(f.read()).decode('utf-8')
+###       print(f"data:image/jpeg;base64,{encoded}")
+###
+### Online: https://www.base64-image.de/
+### 
+### Veja mais exemplos em: EXEMPLO-IMAGEM-BASE64.md
+
+### 2.6 - Classificar imagem (com descrição)
+POST {{baseUrl}}/api/v1.0/ML/imagem/classificar
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "imagemBase64": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAoADwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE3FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmamqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKAP//Z",
+  "descricao": "Minha mesa de trabalho, um pouco desorganizada com muitos papéis"
+}
+
+### 2.7 - Classificar imagem (sem descrição)
+POST {{baseUrl}}/api/v1.0/ML/imagem/classificar
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "imagemBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+}
+
+### ============================================
+### ANÁLISE COMPLETA DE BEM-ESTAR
+### ============================================
+
+### 2.8 - Análise completa de bem-estar (requer dados de humor e sprints)
+GET {{baseUrl}}/api/v1.0/ML/bem-estar/analise-completa
+Authorization: Bearer {{token}}
+
+### ============================================
+### ALERTAS INTELIGENTES
+### ============================================
+
+### 2.9 - Gerar alertas inteligentes (requer dados de humor e sprints)
+GET {{baseUrl}}/api/v1.0/ML/alertas/gerar
+Authorization: Bearer {{token}}
+
+### ============================================
+### PREPARAÇÃO: CRIAR DADOS PARA TESTES COMPLETOS
+### ============================================
+
+### 3.1 - Criar registro de humor (para análise completa)
+POST {{baseUrl}}/api/v1.0/Humor
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nivelHumor": 2,
+  "nivelEnergia": 2,
+  "comentario": "Muito cansado e sobrecarregado. Não consigo descansar direito."
+}
+
+### 3.2 - Criar outro registro de humor
+POST {{baseUrl}}/api/v1.0/Humor
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nivelHumor": 1,
+  "nivelEnergia": 1,
+  "comentario": "Esgotado, muito estressado com o trabalho."
+}
+
+### 3.3 - Criar sprint (para análise completa)
+POST {{baseUrl}}/api/v1.0/Sprints
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nomeSprint": "Sprint Teste IA",
+  "dataInicio": "2024-01-15T09:00:00Z",
+  "dataFim": "2024-01-29T18:00:00Z",
+  "produtividade": 90.0,
+  "tarefasConcluidas": 20,
+  "commits": 50
+}
+
+### ============================================
+### TESTES APÓS CRIAR DADOS
+### ============================================
+
+### 3.4 - Análise completa (agora com dados)
+GET {{baseUrl}}/api/v1.0/ML/bem-estar/analise-completa
+Authorization: Bearer {{token}}
+
+### 3.5 - Gerar alertas (agora com dados)
+GET {{baseUrl}}/api/v1.0/ML/alertas/gerar
+Authorization: Bearer {{token}}
+

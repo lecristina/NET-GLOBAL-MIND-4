@@ -144,7 +144,12 @@ builder.Services.AddScoped<IBadgeService, BadgeService>();
 builder.Services.AddScoped<nexus.Services.Auth.JwtService>();
 
 // Configurar serviços de ML
-// TODO: Implementar serviço de ML para análise de bem-estar do MindTrack
+builder.Services.AddScoped<nexus.Services.ML.NLPService>();
+builder.Services.AddScoped<nexus.Services.ML.MLModelTrainer>();
+// Usar versão melhorada com ML.NET treinado e NLP
+builder.Services.AddScoped<nexus.Services.ML.ISentimentAnalysisService, nexus.Services.ML.SentimentAnalysisServiceV2>();
+builder.Services.AddScoped<nexus.Services.ML.IImageClassificationService, nexus.Services.ML.ImageClassificationService>();
+builder.Services.AddScoped<nexus.Services.ML.IWellnessAnalysisService, nexus.Services.ML.WellnessAnalysisService>();
 
 // ============================================
 // CONFIGURAÇÃO JWT - RECRIADA DO ZERO
